@@ -40,6 +40,10 @@ function get_duo_sdk()
 if [ ! -d ${MILKV_DUO_SDK} ]; then
   echo "SDK does not exist, download it now..."
   get_duo_sdk
+  if [ $? -ne 0 ]; then
+    echo "Get SDK failed!"
+    return 1
+  fi
 fi
 
 export TOOLCHAIN_PREFIX=${MILKV_DUO_SDK}/bin/riscv64-unknown-linux-musl-

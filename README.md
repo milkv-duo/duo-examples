@@ -15,7 +15,7 @@
   (也可以使用虚拟机中的Ubuntu系统、Windows中WSL安装的Ubuntu、基于Docker的Ubuntu系统)
 - 安装编译依赖的工具:
 ```
-sudo apt-get install git make
+sudo apt-get install wget git make
 ```
 
 ## 获取 Examples
