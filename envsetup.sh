@@ -4,7 +4,9 @@ SDK_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 echo "SDK_DIR: ${SDK_DIR}"
 
 MILKV_DUO_SDK=${SDK_DIR}/duo-sdk
-SDK_URL="https://github.com/milkv-duo/milkv-duo-buildroot-sdk/releases/download/20230616/duo-sdk.tar.gz"
+TOOLCHAIN_DIR=${MILKV_DUO_SDK}/riscv64-linux-musl-x86_64
+
+SDK_URL="https://github.com/milkv-duo/duo-app-sdk/releases/download/20230621/duo-sdk.tar.gz"
 
 function get_duo_sdk()
 {
@@ -46,8 +48,8 @@ if [ ! -d ${MILKV_DUO_SDK} ]; then
   fi
 fi
 
-export TOOLCHAIN_PREFIX=${MILKV_DUO_SDK}/bin/riscv64-unknown-linux-musl-
-export SYSROOT=${MILKV_DUO_SDK}/riscv64-buildroot-linux-musl/sysroot
+export TOOLCHAIN_PREFIX=${TOOLCHAIN_DIR}/bin/riscv64-unknown-linux-musl-
+export SYSROOT=${MILKV_DUO_SDK}/rootfs
 
 export LDFLAGS="-mcpu=c906fdv -march=rv64imafdcv0p7xthead -mcmodel=medany -mabi=lp64d"
 # -Os

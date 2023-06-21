@@ -20,18 +20,18 @@ sudo apt-get install wget git make
 
 ## 获取 Examples
 ```
-git clone https://github.com/milkv-duo/milkv-duo-examples.git
+git clone https://github.com/milkv-duo/duo-examples.git
 ```
 
 ## 加载编译环境
 
 ```
-cd milkv-duo-examples
+cd duo-examples
 source envsetup.sh
 ```
-第一次加载会自动下载所需的SDK包，大小为25M左右，下载完会自动解压到`milkv-duo-examples`下，解压后的目录名为`duo-sdk`，下次加载时检测到已存在该目录，就不会再次下载了
+第一次加载会自动下载所需的SDK包，大小为25M左右，下载完会自动解压到`duo-examples`下，解压后的目录名为`duo-sdk`，下次加载时检测到已存在该目录，就不会再次下载了
 <br><br>
-*注: 如果因为网络原因无法完成SDK包的下载，请通过其他途径获取到`duo-sdk.tar.gz`包，手动解压到`milkv-duo-examples`目录下，重新`source envsetup.sh`*
+*注: 如果因为网络原因无法完成SDK包的下载，请通过其他途径获取到`duo-sdk.tar.gz`包，手动解压到`duo-examples`目录下，重新`source envsetup.sh`*
 
 ## 编译测试
 以`hello-world`为例，进入该例子目录直接执行make即可
@@ -39,7 +39,7 @@ source envsetup.sh
 cd hello-world
 make
 ```
-编译成功后将生成的`helloworld`可执行程序通过网口或者RNDIS网络等方式传送到Duo设备中，比如[默认固件](https://github.com/milkv-duo/milkv-duo-buildroot-sdk/releases)支持的RNDIS方式，Duo的IP为`192.168.42.1`，用户名是`root`，密码是`milkv`
+编译成功后将生成的`helloworld`可执行程序通过网口或者RNDIS网络等方式传送到Duo设备中，比如[默认固件](https://github.com/milkv-duo/duo-buildroot-sdk/releases)支持的RNDIS方式，Duo的IP为`192.168.42.1`，用户名是`root`，密码是`milkv`
 ```
 $ scp helloworld root@192.168.42.1:/root/
 ```
@@ -63,7 +63,7 @@ Hello, World!
 - 将生成的`gpio_test`可执行程序发送到Duo中运行
 
 注意:
-- 新建工程目录不是必须要放到milkv-duo-examples目录下的，可以根据自己的习惯放到其他位置，执行make编译命令之前，加载过milkv-duo-examples目录下的编译环境就可以了(`source /PATH/TO/milkv-duo-examples/envsetup.sh`)
+- 新建工程目录不是必须要放到duo-examples目录下的，可以根据自己的习惯放到其他位置，执行make编译命令之前，加载过duo-examples目录下的编译环境就可以了(`source /PATH/TO/duo-examples/envsetup.sh`)
 - 在加载过编译环境(`envsetup.sh`)的终端里，不要编译其他平台如ARM或X86的Makefile工程，如需编译其他平台项目，需要新开终端
 
 <br>
