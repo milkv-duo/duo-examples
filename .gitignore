@@ -1,6 +1,6 @@
 
-duo-sdk/
-duo-sdk.tar.gz
+/duo-sdk
+/duo-sdk.tar.gz
 
 *.o
 

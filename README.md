@@ -29,7 +29,7 @@ git clone https://github.com/milkv-duo/duo-examples.git
 cd duo-examples
 source envsetup.sh
 ```
-第一次加载会自动下载所需的SDK包，大小为25M左右，下载完会自动解压到`duo-examples`下，解压后的目录名为`duo-sdk`，下次加载时检测到已存在该目录，就不会再次下载了
+第一次加载会自动下载所需的SDK包，大小为180M左右，下载完会自动解压到`duo-examples`下，解压后的目录名为`duo-sdk`，下次加载时检测到已存在该目录，就不会再次下载了
 <br><br>
 *注: 如果因为网络原因无法完成SDK包的下载，请通过其他途径获取到`duo-sdk.tar.gz`包，手动解压到`duo-examples`目录下，重新`source envsetup.sh`*
 
@@ -90,6 +90,12 @@ mv /mnt/system/blink.sh /mnt/system/blink.sh_backup && sync
 ```
 mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
 ```
+
+## I2C
+
+App|Description
+---|---
+[bmp280_i2c](i2c/bmp280_i2c) | 通过I2C接口连接温度气压传感器BMP280，读取当前温度和气压值
 
 <br>
 
