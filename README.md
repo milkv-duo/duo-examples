@@ -1,92 +1,88 @@
-
 # Milk-V Duo Examples
-简体中文 | [English](./README-en.md)
+English | [简体中文](./README-zh.md)
 
 <br>
 
-本工程提供了在Linux环境下使用C/C++开发应用的一些例子，可以在`Milk-V Duo`设备上运行
+This project provides some examples of developing applications using C/C++ in a Linux environment, which can be run on the 'Milk-V Duo' device.
 
 <br>
 
-## 开发环境
+## Build environment on Ubuntu20.04
 
-- 使用本地的Ubuntu系统，推荐 `Ubuntu 20.04 LTS`
-  <br>
-  (也可以使用虚拟机中的Ubuntu系统、Windows中WSL安装的Ubuntu、基于Docker的Ubuntu系统)
-- 安装编译依赖的工具:
-```
-sudo apt-get install wget git make
-```
+You can also use Ubuntu installed in a virtual machine, Ubuntu installed via WSL on Windows, or Ubuntu-based systems using Docker.
 
-## 获取 Examples
-```
-git clone https://github.com/milkv-duo/duo-examples.git
-```
+- Install the tools that compile dependencies.
+  ```
+  sudo apt-get install wget git make
+  ```
+- Get example source code
+  ```
+  git clone https://github.com/milkv-duo/duo-examples.git
+  ```
 
-## 加载编译环境
+- Prepare compilation environment
+  ```
+  cd duo-examples
+  source envsetup.sh
+  ```
+  The first time you source it, the required SDK package will be automatically downloaded, which is approximately 180MB in size. Once downloaded, it will be automatically extracted to the 'duo-examples' directory with the name 'duo-sdk'. When source it next time, if the directory already exists, it will not be downloaded again.
 
-```
-cd duo-examples
-source envsetup.sh
-```
-第一次加载会自动下载所需的SDK包，大小为180M左右，下载完会自动解压到`duo-examples`下，解压后的目录名为`duo-sdk`，下次加载时检测到已存在该目录，就不会再次下载了
-<br><br>
-*注: 如果因为网络原因无法完成SDK包的下载，请通过其他途径获取到`duo-sdk.tar.gz`包，手动解压到`duo-examples`目录下，重新`source envsetup.sh`*
+- Compile testing  
 
-## 编译测试
-以`hello-world`为例，进入该例子目录直接执行make即可
-```
-cd hello-world
-make
-```
-编译成功后将生成的`helloworld`可执行程序通过网口或者RNDIS网络等方式传送到Duo设备中，比如[默认固件](https://github.com/milkv-duo/duo-buildroot-sdk/releases)支持的RNDIS方式，Duo的IP为`192.168.42.1`，用户名是`root`，密码是`milkv`
-```
-$ scp helloworld root@192.168.42.1:/root/
-```
-发送成功后，在ssh或者串口登陆的终端中运行`./helloworld`，会打印`Hello, World!`
-```
-[root@milkv]~# ./helloworld
-Hello, World!
-```
-至此，我们的编译开发环境就可以正常使用了
+  Take hello-world as an example, enter the hello-world directory and execute make
+  ```
+  cd hello-world
+  make
+  ```
+  After the compilation is successful, send the generated `helloworld` executable program to the Duo device through the network port or the RNDIS network. For example, the RNDIS method supported by the [default firmware](https://github.com/milkv-duo/duo-buildroot-sdk/releases), Duo’s IP is 192.168.42.1, the user name is `root`, and the password is `milkv`
+  ```
+  scp helloworld root@192.168.42.1:/root/
+  ```
+  After sending successfully, run ./helloworld in the terminal logged in via ssh or serial port, and it will print `Hello, World!`
+  ```
+  [root@milkv]~# ./helloworld
+  Hello, World!
+  ```
+  **At this point, our compilation and development environment is ready for use.**
 
-## 如何创建自己的工程
+## How to create your own project
 
-根据需要，拷贝现有的例子，稍加修改即可。比如需要操作某个GPIO，可以参考`blink`例子，LED闪烁就是通过控制GPIO电平高低实现的，当前SDK提供的GPIO操作使用的是`WiringX`的库，已经针对Duo做了适配，平台初始化和控制GPIO的方法，可参考`blink.c`中的代码
+You can simply copy existing examples and make necessary modifications. For instance, if you need to manipulate a GPIO, you can refer to the 'blink' example. LED blinking is achieved by controlling the GPIO's voltage level. The current SDK utilizes the WiringX library for GPIO operations, which has been adapted specifically for Duo. You can find the platform initialization and GPIO control methods in the 'blink.c' code for reference.
 
-- 新建自己的工程目录`my-project`
-- 复制`blink`例子中的`blink.c`和`Makefile`文件到`my-project`目录
-- 将`blink.c`重命名为自己所需名字如`gpio_test.c`
-- 修改`Makefile`中的`TARGET=blink`为`TARGET=gpio_test`
-- 修改`gpio_test.c`，实现自己的代码逻辑
-- 执行`make`命令编译
-- 将生成的`gpio_test`可执行程序发送到Duo中运行
+- Create your own project directory called 'my-project'.
+- Copy the 'blink.c' and 'Makefile' files from the 'blink' example to the 'my-project' directory.
+- Rename 'blink.c' to your desired name, such as 'gpio_test.c'.
+- Modify the 'Makefile' by changing 'TARGET=blink' to 'TARGET=gpio_test'.
+- Modify 'gpio_test.c' to implement your own code logic.
+- Execute the 'make' command to compile.
+- Send the generated 'gpio_test' executable program to Duo for execution.
+  
+Note:
 
-注意:
-- 新建工程目录不是必须要放到duo-examples目录下的，可以根据自己的习惯放到其他位置，执行make编译命令之前，加载过duo-examples目录下的编译环境就可以了(`source /PATH/TO/duo-examples/envsetup.sh`)
-- 在加载过编译环境(`envsetup.sh`)的终端里，不要编译其他平台如ARM或X86的Makefile工程，如需编译其他平台项目，需要新开终端
+- Creating a new project directory is not mandatory to be placed within the 'duo-examples' directory. You can choose any location based on your preference. Before executing the 'make' compilation command, it is sufficient to load the compilation environment from the 'duo-examples' directory (source /PATH/TO/duo-examples/envsetup.sh).
+- Within the terminal where the compilation environment (envsetup.sh) is loaded, avoid compiling Makefile projects for other platforms such as ARM or X86. If you need to compile projects for other platforms, open a new terminal.
 
 <br>
 
-# 各例子说明
+# Explanation of each example
 
 ## hello-world
 
-一个简单的例子，不操作Duo外设，仅打印输出"Hello, World!"，用来验证开发环境
+A simple example that doesn't interact with Duo peripherals, only prints the output 'Hello, World!' to verify the development environment.
 
 ## blink
 
-一个让Duo板载LED闪烁的例子，操作GPIO使用的是`wiringX`的库，`blink.c`代码中包含了`wiringX`中的平台初始化以及操作GPIO的方法
+This example demonstrates how to control an LED connected to a GPIO pin. It uses the WiringX library to toggle the GPIO pin's voltage level, resulting in the LED blinking.  
 
-注意:
-<br>
-当前Duo的默认固件上电后LED会自动闪烁，这个是通过开机脚本实现的，在测试该blink例子的时候，需要将LED闪烁的脚本禁用，在Duo的终端中执行:
+The 'blink.c' code includes platform initialization and GPIO manipulation methods from the WiringX library.  
+
+To test the 'blink' example, which involves LED blinking, you need to disable the script responsible for the automatic LED blinking on the default firmware of Duo. In the Duo terminal, execute the following command:
 ```
 mv /mnt/system/blink.sh /mnt/system/blink.sh_backup && sync
 ```
-也就是将LED闪烁脚本改名，重启Duo后，LED就不闪了
-<br>
-测试完我们C语言实现的blink程序后，如果需要恢复LED闪烁脚本，再将其名字改回来，重启即可
+This command renames the LED blinking script. After restarting Duo, the LED will no longer blink.
+
+Once you have finished testing the 'blink' program implemented in C, if you want to restore the LED blinking script, you can rename it back using the following command and then restart Duo:
 ```
 mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
 ```
@@ -95,17 +91,15 @@ mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
 
 App|Description
 ---|---
-[bmp280_i2c](i2c/bmp280_i2c) | 通过I2C接口连接温度气压传感器BMP280，读取当前温度和气压值
+[bmp280_i2c](i2c/bmp280_i2c) | By connecting the temperature and pressure sensor BMP280 through the I2C interface, you can read the current temperature and pressure values.
 
 <br>
 
-# 关于 Milk-V
+# About Milk-V
 
-- [官方网站](https://milkv.io/)
+- [Official Website](https://milkv.io/)
 
 <br>
 
-# 技术论坛
+# FORUM
 - [MilkV Community](https://community.milkv.io/)
-
-
