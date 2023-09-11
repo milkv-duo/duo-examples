@@ -6,7 +6,7 @@ echo "SDK_DIR: ${SDK_DIR}"
 MILKV_DUO_SDK=${SDK_DIR}/duo-sdk
 TOOLCHAIN_DIR=${MILKV_DUO_SDK}/riscv64-linux-musl-x86_64
 
-SDK_URL="https://github.com/milkv-duo/duo-app-sdk/releases/download/20230621/duo-sdk.tar.gz"
+SDK_URL="https://github.com/milkv-duo/duo-app-sdk/releases/download/duo-app-sdk-v1.1/duo-sdk-v1.1.tar.gz"
 
 function get_duo_sdk()
 {
