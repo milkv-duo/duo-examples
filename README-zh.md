@@ -30,7 +30,7 @@
   ```
   第一次加载会自动下载所需的SDK包，大小为180M左右，下载完会自动解压到`duo-examples`下，解压后的目录名为`duo-sdk`，下次加载时检测到已存在该目录，就不会再次下载了
   <br><br>
-  *注: 如果因为网络原因无法完成SDK包的下载，请通过其他途径获取到`duo-sdk.tar.gz`包，手动解压到`duo-examples`目录下，重新`source envsetup.sh`*
+  *注: 如果因为网络原因无法完成SDK包的下载，请通过[其他途径](https://github.com/milkv-duo/duo-app-sdk/releases/download/duo-app-sdk-v1.1/duo-sdk-v1.1.tar.gz)获取到`duo-sdk.tar.gz`包，手动解压到`duo-examples`目录下，重新`source envsetup.sh`*
 
 - 编译测试
 
