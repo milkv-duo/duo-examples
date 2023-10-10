@@ -4,7 +4,7 @@
 #include <wiringx.h>
 
 int main() {
-    int DUO_LED = 25;
+    int DUO_LED = 0;
 
     if(wiringXSetup("duo", NULL) == -1) {
         wiringXGC();
