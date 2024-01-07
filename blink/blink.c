@@ -8,7 +8,7 @@ int main() {
 
     if(wiringXSetup("duo", NULL) == -1) {
         wiringXGC();
-        return -1;
+        return 1;
     }
 
     if(wiringXValidGPIO(DUO_LED) != 0) {
