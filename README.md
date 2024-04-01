@@ -95,6 +95,12 @@ App|Description
 
 <br>
 
+## AnalogRead (ADC)
+
+This example enables the CV180x 12bit resolution analog-digital converter module, called SARADC. [/adc/](/adc) has two examples to run the module, first is an [sh script](adc/adcRead.sh) and the other one is [C source file](adc/adcRead.c), which can be easy compiled with TinyCC on Duo board.
+
+The SARADC utilization reference is the [CV180x CV181x Peripheral Drive Operation Guide](adc/PeripheralDriverOperationGuide_en.pdf).
+
 # About Milk-V
 
 - [Official Website](https://milkv.io/)
