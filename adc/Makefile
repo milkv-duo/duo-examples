@@ -24,7 +24,7 @@ SOURCE = $(wildcard *.c)
 OBJS = $(patsubst %.c,%.o,$(SOURCE))
 
 $(TARGET): $(OBJS)
-	$(CC) -o $@ $(OBJS) $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LDFLAGS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
