@@ -12,10 +12,11 @@
 #include <fcntl.h>
 
 int main(){
-	if (system("lsmod | grep -q \"cv180x_saradc\"") == 0){
+	if ((system("lsmod | grep -q \"cv180x_saradc\"") == 0)||(system("lsmod | grep -q \"cv181x_saradc\"") == 0)){
 		printf("SARADC module already loaded.\n");
 	}else{
 		system("insmod $(find / -name \"cv180x_saradc.ko\" 2>/dev/null)");
+		system("insmod $(find / -name \"cv181x_saradc.ko\" 2>/dev/null)");
 		printf("SARADC module loaded.\n");
 	}
 	int fd = open("/sys/class/cvi-saradc/cvi-saradc0/device/cv_saradc", O_RDWR|O_NOCTTY|O_NDELAY);
