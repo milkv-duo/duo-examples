@@ -1,7 +1,8 @@
 #!/bin/sh
-saradc_path=$(find / -name "cv180x_saradc.ko" 2>/dev/null)
+saradc_path_cv180x=$(find / -name "cv180x_saradc.ko" 2>/dev/null)
+saradc_path_cv181x=$(find / -name "cv181x_saradc.ko" 2>/dev/null)
 
-if lsmod | grep -q "cv180x_saradc";then
+if (lsmod | grep -q "cv180x_saradc") || (lsmod | grep -q "cv181x_saradc") ;then
         echo "SARADC module already loaded."
         echo "Define the ADC channel:
                 1: ADC1 (GP26|PIN31)
@@ -24,7 +25,8 @@ if lsmod | grep -q "cv180x_saradc";then
         fi
 
 else
-        insmod $saradc_path
+        insmod $saradc_path_cv180x >/dev/null
+        insmod $saradc_path_cv181x >/dev/null
         echo "SARADC module loaded."
         echo "Define the ADC channel:
                 1: ADC1 (GP26|PIN31)
