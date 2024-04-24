@@ -92,17 +92,17 @@ mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
 App|Description
 ---|---
 [bmp280_i2c](i2c/bmp280_i2c) | By connecting the temperature and pressure sensor BMP280 through the I2C interface, you can read the current temperature and pressure values.
----|---
+
 [vl53l0x_i2c](i2c/vl53l0x_i2c) | Read the Time of Flight sensor VL53L0X module to get the measured distance.
----|---
+
 [ssd1306_i2c](i2c/ssd1306_i2c) | Displaying strings on SSD1306 OLED display via I2C interface.
----|---
+
 [adxl345_i2c](i2c/adxl345_i2c) | Read the acceleration data obtained by ADXL345 through the I2C interface, once every 1 sencond.
----|---
+
 [lcm1602_i2c](i2c/lcm1602_i2c) | Display string on 1602 LCD screen via I2C interface.
----|---
+
 [lcm2004_i2c](i2c/lcm2004_i2c) | Display string on 2004 LCD screen via I2C interface.
----|---
+
 [tcs34725_i2c](i2c/tcs34725_i2c) | Read the TCS34725 color sensor through the I2C interface and output the obtained data.
 
 ## SPI
@@ -110,7 +110,7 @@ App|Description
 App|Description
 ---|---
 [max6675_spi](spi/max6675_spi) | Connect the K-type thermocouple measurement module MAX6675 through the SPI interface to measure the temperature on the current sensor.
----|---
+
 [rc522_spi](spi/rc522_spi) | Connect the RC522 RFID reading and writing module through the SPI interface, read the card ID and type and output it to the screen.
 
 <br>
