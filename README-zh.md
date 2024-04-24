@@ -96,8 +96,27 @@ mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
 App|Description
 ---|---
 [bmp280_i2c](i2c/bmp280_i2c) | 通过I2C接口连接温度气压传感器BMP280，读取当前温度和气压值
+[vl53l0x_i2c](i2c/vl53l0x_i2c) | 通过I2C接口使用TOF测距传感器VL53L0X模块，读取测量到的距离
+[ssd1306_i2c](i2c/ssd1306_i2c) | 通过I2C接口在SSD1306 OLED显示屏上显示字符串
+[adxl345_i2c](i2c/adxl345_i2c) | 通过I2C接口读取ADXL345获得的加速度数据，每1s读取一次
+[lcm1602_i2c](i2c/lcm1602_i2c) | 通过I2C接口在1602 LCD屏幕上显示字符串
+[lcm2004_i2c](i2c/lcm2004_i2c) | 通过I2C接口在2004 LCD屏幕上显示字符串
+[tcs34725_i2c](i2c/tcs34725_i2c) | 通过I2C接口读取TCS34725颜色传感器，并将获得的数据输出
+
+## SPI
+
+App|Description
+---|---
+[max6675_spi](spi/max6675_spi) | 通过SPI接口连接K型热电偶测量模块MAX6675，测量当前传感器上的温度
+[rc522_spi](spi/rc522_spi) | 通过SPI接口连接RC522 RFID读写模块，读取卡片ID和类型并输出到屏幕
 
 <br>
+
+## AnalogRead (ADC)
+
+此示例启用CV180x 12位分辨率模数转换器模块，称为SARADC。 [/adc/](/adc) 有两种示例， [sh script](adc/adcRead.sh) 和 [C source file](adc/adcRead.c)，它们可以非常容易的在 Duo 上使用 TinyCC 编译。
+
+关于SARADC的使用可以参考 [CV180x CV181x Peripheral Drive Operation Guide](adc/PeripheralDriverOperationGuide_en.pdf)。
 
 # 关于 Milk-V
 
