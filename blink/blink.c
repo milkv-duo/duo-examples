@@ -4,9 +4,14 @@
 #include <wiringx.h>
 
 int main() {
+    // Duo/Duo256M: LED = 25
+    // Duo/DuoS:    LED =  0
     int DUO_LED = 25;
 
-    if(wiringXSetup("duo", NULL) == -1) {
+    // Duo:     milkv_duo
+    // Duo256M: milkv_duo256m
+    // DuoS:    milkv_duos
+    if(wiringXSetup("milkv_duo", NULL) == -1) {
         wiringXGC();
         return 1;
     }

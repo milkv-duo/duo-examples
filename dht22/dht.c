@@ -106,7 +106,10 @@ static int read_dht22_dat() {
 }
 
 int main() {
-    if (wiringXSetup("duo", NULL) == -1) {
+    // Duo:     milkv_duo
+    // Duo256M: milkv_duo256m
+    // DuoS:    milkv_duos
+    if (wiringXSetup("milkv_duo", NULL) == -1) {
         wiringXGC();
         return -1;
     }

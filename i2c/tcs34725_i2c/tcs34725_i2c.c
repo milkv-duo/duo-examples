@@ -211,7 +211,10 @@ uint8_t get_tcs34725_rgbc(uint16_t *colour_r, uint16_t *colour_g, uint16_t *colo
 int main() {
     uint16_t r,g,b,l;
 
-    if(wiringXSetup("duo", NULL) == -1) {
+    // Duo:     milkv_duo
+    // Duo256M: milkv_duo256m
+    // DuoS:    milkv_duos
+    if(wiringXSetup("milkv_duo", NULL) == -1) {
         wiringXGC();
         return -1;
     }

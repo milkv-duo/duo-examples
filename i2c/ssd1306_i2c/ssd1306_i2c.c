@@ -384,7 +384,10 @@ void ssd1306_push_string(uint8_t x,uint8_t y,uint8_t *chr,uint8_t sizey)
 int main() {
     int data = 0;
 
-    if(wiringXSetup("duo", NULL) == -1) {
+    // Duo:     milkv_duo
+    // Duo256M: milkv_duo256m
+    // DuoS:    milkv_duos
+    if(wiringXSetup("milkv_duo", NULL) == -1) {
         wiringXGC();
         return -1;
     }
