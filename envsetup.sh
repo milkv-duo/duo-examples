@@ -25,8 +25,18 @@ if [ ! -d ${MILKV_DUO_SDK} ]; then
   echo "SDK does not exist, download it now..."
   get_duo_sdk
   if [ $? -ne 0 ]; then
-    echo "Get SDK failed!"
+    echo "Get the SDK failed!"
     return 1
+  fi
+else
+  if [ ! -d ${MILKV_DUO_SDK}/.git ]; then
+    echo "SDK is not the latest one, re-downloading ..."
+    rm -rf ${MILKV_DUO_SDK}
+    get_duo_sdk
+    if [ $? -ne 0 ]; then
+      echo "Re-downloading the SDK failed!"
+      return 1
+    fi
   fi
 fi
 
