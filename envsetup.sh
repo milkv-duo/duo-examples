@@ -6,35 +6,17 @@ echo "SDK_DIR: ${SDK_DIR}"
 MILKV_DUO_SDK=${SDK_DIR}/duo-sdk
 TOOLCHAIN_DIR=${MILKV_DUO_SDK}/riscv64-linux-musl-x86_64
 
-SDK_URL="https://github.com/milkv-duo/duo-app-sdk/releases/download/duo-app-sdk-v1.2.0/duo-sdk-v1.2.0.tar.gz"
+SDK_URL="https://github.com/milkv-duo/duo-sdk.git"
 
 function get_duo_sdk()
 {
   pushd ${SDK_DIR}
 
-  echo "SDK_URL: ${SDK_URL}"
-  sdk_file=${SDK_URL##*/}
-  echo "sdk_file: ${sdk_file}"
-
-  wget ${SDK_URL} -O ${sdk_file}
+  git clone ${SDK_URL}
   if [ $? -ne 0 ]; then
     echo "Failed to download ${SDK_URL} !"
     return 1
   fi
-
-  if [ ! -f ${sdk_file} ]; then
-    echo "${sdk_file} not found!"
-    return 1
-  fi
-
-  echo "Extracting ${sdk_file}..."
-  tar -xf ${sdk_file}
-  if [ $? -ne 0 ]; then
-    echo "Extract ${sdk_file} failed!"
-    return 1
-  fi
-
-  [ -f ${sdk_file} ] && rm -rf ${sdk_file}
 
   popd
 }
