@@ -5,7 +5,7 @@
 
 int main() {
     // Duo/Duo256M: LED = 25
-    // Duo/DuoS:    LED =  0
+    // DuoS:        LED =  0
     int DUO_LED = 25;
 
     // Duo:     milkv_duo
