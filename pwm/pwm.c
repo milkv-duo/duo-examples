@@ -10,7 +10,7 @@
 #include <wiringx.h>
 
  /* Duo 相关芯片的 PWM 示例代码。
-    Sample code for ADXL345 module (three-axis acceleration sensor).
+    Sample code for PWM in Chip Duo.
 
     注意：确保设备在3.3伏而不是5伏的电压下使用。Duo GPIO 不能在5伏电平下使用。
     NOTE: Ensure the device is capable of being driven at 3.3v NOT 5v. The Duo
@@ -41,7 +41,7 @@ int main() {
     // Duo:     milkv_duo
     // Duo256M: milkv_duo256m
     // DuoS:    milkv_duos
-    if(wiringXSetup("milkv_duo256m", NULL) == -1) {
+    if(wiringXSetup("milkv_duo", NULL) == -1) {
         wiringXGC();
         return 1;
     }
@@ -57,15 +57,16 @@ int main() {
     if(duty < 0) duty = 0;
     if(duty > 1000) duty = 1000;
 
-    //使能并设置 PWM 极性; Enable and set PWM Polarity.
-    wiringXPWMEnable(pwm_pin, 1);
-    wiringXPWMSetPolarity(pwm_pin, 0);
-
     //设置 PWM 周期为 1000 ns; Set PWM Period 1000 ns long.
     wiringXPWMSetPeriod(pwm_pin, 1000);
 
     //设置 PWM 占空比; Set PWM Duty.
     wiringXPWMSetDuty(pwm_pin, duty);
+
+    //设置 PWM 极性并使能; Set PWM Polarity and enable.
+    wiringXPWMSetPolarity(pwm_pin, 0);
+    wiringXPWMEnable(pwm_pin, 1);
+
     printf("pin %d -> duty %d\n",pwm_pin ,duty);
 
     return 0;
