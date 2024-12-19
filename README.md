@@ -23,6 +23,23 @@ You can also use Ubuntu installed in a virtual machine, Ubuntu installed via WSL
   ```
   The first time you source it, the required toolchain will be automatically downloaded. Once downloaded, it will be automatically extracted to the `duo-examples` directory with the name `host-tools`. When source it next time, if the directory already exists, it will not be downloaded again.
 
+  In the source process, you need to enter the required compilation target as prompted:
+  ```
+  Select Product:
+  1. Duo (CV1800B)
+  2. Duo256M (SG2002) or DuoS (SG2000)
+  ```
+  If the target board is Duo, select `1`, if the target board is Duo256M or DuoS, select `2`. Since Duo256M and DuoS support both RISCV and ARM architectures, you need to continue to select as prompted:
+  ```
+  Select Arch:
+  1. ARM64
+  2. RISCV64
+  Which would you like:
+  ```
+  If the test program needs to be run on a ARM system, select `1`, if it is an RISCV system, select `2`.
+
+  **In the same terminal, you only need to source it once.**
+
 - Compile testing  
 
   Take hello-world as an example, enter the hello-world directory and execute make:

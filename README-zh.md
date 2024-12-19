@@ -27,6 +27,23 @@
   ```
   第一次加载会自动下载所需的工具链，下载完会自动解压到`duo-examples`下，解压后的目录名为`host-tools`，下次再加载编译环境时，会检测该目录，如果已存在则不会再次下载。
 
+  加载编译环境时需要按提示输入所需编译目标：
+  ```
+  Select Product:
+  1. Duo (CV1800B)
+  2. Duo256M (SG2002) or DuoS (SG2000)
+  ```
+  如果目标板是 Duo 则选择 `1`，如果目标板是 Duo256M 或者 DuoS 则选择 `2`。由于 Duo256M 和 DuoS 支持 RISCV 和 ARM 两种架构，还需要按提示继续选择：
+  ```
+  Select Arch:
+  1. ARM64
+  2. RISCV64
+  Which would you like:
+  ```
+  如果测试程序需要在 ARM 系统中运行，选择 `1`，如果是 RISCV 系统则选择 `2`。
+
+  **同一个终端中，只需要加载一次编译环境即可。**
+
 - 编译测试
 
   以`hello-world`为例，进入该例子目录直接执行 make 即可：
