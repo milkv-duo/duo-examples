@@ -21,7 +21,7 @@ You can also use Ubuntu installed in a virtual machine, Ubuntu installed via WSL
   cd duo-examples
   source envsetup.sh
   ```
-  The first time you source it, the required toolchain will be automatically downloaded. Once downloaded, it will be automatically extracted to the `duo-examples` directory with the name `host-tools`. When source it next time, if the directory already exists, it will not be downloaded again.
+  The first time you source it, the required compilation toolchain will be automatically downloaded. The downloaded directory is named `host-tools`. The next time the compilation environment is loaded, the directory will be detected. If it already exists, it will not be downloaded again.
 
   In the source process, you need to enter the required compilation target as prompted:
   ```
