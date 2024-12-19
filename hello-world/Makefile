@@ -14,11 +14,6 @@ endif
 
 CC = $(TOOLCHAIN_PREFIX)gcc
 
-CFLAGS += -I$(SYSROOT)/usr/include
-
-LDFLAGS += -L$(SYSROOT)/lib
-LDFLAGS += -L$(SYSROOT)/usr/lib
-
 SOURCE = $(wildcard *.c)
 OBJS = $(patsubst %.c,%.o,$(SOURCE))
 

@@ -14,11 +14,6 @@ endif
 
 CC = $(TOOLCHAIN_PREFIX)gcc
 
-CFLAGS += -I$(SYSROOT)/usr/include
-CFLAGS += -I./
-
-LDFLAGS += -L$(SYSROOT)/lib
-LDFLAGS += -L$(SYSROOT)/usr/lib
 LDFLAGS += -lwiringx
 
 SOURCE = $(wildcard *.c)
