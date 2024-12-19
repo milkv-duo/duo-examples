@@ -10,7 +10,7 @@
 #include <string.h>
 
 #include <wiringx.h>
-#include <rc522.h>
+#include "rc522.h"
 
  /* RC522（RFID读写模块）的示例代码。
     Example code to RC522 ，RFID module.
