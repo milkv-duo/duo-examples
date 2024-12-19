@@ -1,11 +1,7 @@
 # Milk-V Duo Examples
 English | [简体中文](./README-zh.md)
 
-<br>
-
 This project provides some examples of developing applications using C/C++ in a Linux environment, which can be run on the `Milk-V Duo` device.
-
-<br>
 
 ## Build environment on Ubuntu20.04
 
@@ -25,16 +21,16 @@ You can also use Ubuntu installed in a virtual machine, Ubuntu installed via WSL
   cd duo-examples
   source envsetup.sh
   ```
-  The first time you source it, the required SDK package will be automatically downloaded, which is approximately 180MB in size. Once downloaded, it will be automatically extracted to the `duo-examples` directory with the name `duo-sdk`. When source it next time, if the directory already exists, it will not be downloaded again.
+  The first time you source it, the required toolchain will be automatically downloaded. Once downloaded, it will be automatically extracted to the `duo-examples` directory with the name `host-tools`. When source it next time, if the directory already exists, it will not be downloaded again.
 
 - Compile testing  
 
-  Take hello-world as an example, enter the hello-world directory and execute make
+  Take hello-world as an example, enter the hello-world directory and execute make:
   ```
   cd hello-world
   make
   ```
-  After the compilation is successful, send the generated `helloworld` executable program to the Duo device through the network port or the RNDIS network. For example, the RNDIS method supported by the [default firmware](https://github.com/milkv-duo/duo-buildroot-sdk/releases), Duo’s IP is 192.168.42.1, the user name is `root`, and the password is `milkv`
+  After the compilation is successful, send the generated `helloworld` executable program to the Duo device through the network port or the USB-NCM network. For example, the USB-NCM method supported by the [default firmware](https://github.com/milkv-duo/duo-buildroot-sdk/releases), Duo’s IP is 192.168.42.1, the user name is `root`, and the password is `milkv`
   ```
   scp helloworld root@192.168.42.1:/root/
   ```
@@ -61,8 +57,6 @@ Note:
 
 - Creating a new project directory is not mandatory to be placed within the `duo-examples` directory. You can choose any location based on your preference. Before executing the `make` compilation command, it is sufficient to load the compilation environment from the `duo-examples` directory (source /PATH/TO/duo-examples/envsetup.sh).
 - Within the terminal where the compilation environment (envsetup.sh) is loaded, avoid compiling Makefile projects for other platforms such as ARM or X86. If you need to compile projects for other platforms, open a new terminal.
-
-<br>
 
 # Explanation of each example
 
@@ -91,22 +85,20 @@ mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
 
 App|Description
 ---|---
-[bmp280_i2c](i2c/bmp280_i2c) | By connecting the temperature and pressure sensor BMP280 through the I2C interface, you can read the current temperature and pressure values.
-[vl53l0x_i2c](i2c/vl53l0x_i2c) | Read the Time of Flight sensor VL53L0X module to get the measured distance.
-[ssd1306_i2c](i2c/ssd1306_i2c) | Displaying strings on SSD1306 OLED display via I2C interface.
-[adxl345_i2c](i2c/adxl345_i2c) | Read the acceleration data obtained by ADXL345 through the I2C interface, once every 1 sencond.
-[lcm1602_i2c](i2c/lcm1602_i2c) | Display string on 1602 LCD screen via I2C interface.
-[lcm2004_i2c](i2c/lcm2004_i2c) | Display string on 2004 LCD screen via I2C interface.
-[tcs34725_i2c](i2c/tcs34725_i2c) | Read the TCS34725 color sensor through the I2C interface and output the obtained data.
+[bmp280_i2c](i2c/bmp280_i2c) | By connecting the temperature and pressure sensor `BMP280` through the I2C interface, you can read the current temperature and pressure values.
+[vl53l0x_i2c](i2c/vl53l0x_i2c) | Read the Time of Flight sensor `VL53L0X` module to get the measured distance.
+[ssd1306_i2c](i2c/ssd1306_i2c) | Displaying strings on `SSD1306` OLED display via I2C interface.
+[adxl345_i2c](i2c/adxl345_i2c) | Read the acceleration data obtained by `ADXL345` through the I2C interface, once every 1 sencond.
+[lcm1602_i2c](i2c/lcm1602_i2c) | Display string on `1602 LCD` screen via I2C interface.
+[lcm2004_i2c](i2c/lcm2004_i2c) | Display string on `2004 LCD` screen via I2C interface.
+[tcs34725_i2c](i2c/tcs34725_i2c) | Read the `TCS34725` color sensor through the I2C interface and output the obtained data.
 
 ## SPI
 
 App|Description
 ---|---
-[max6675_spi](spi/max6675_spi) | Connect the K-type thermocouple measurement module MAX6675 through the SPI interface to measure the temperature on the current sensor.
-[rc522_spi](spi/rc522_spi) | Connect the RC522 RFID reading and writing module through the SPI interface, read the card ID and type and output it to the screen.
-
-<br>
+[max6675_spi](spi/max6675_spi) | Connect the K-type thermocouple measurement module `MAX6675` through the SPI interface to measure the temperature on the current sensor.
+[rc522_spi](spi/rc522_spi) | Connect the `RC522` RFID reading and writing module through the SPI interface, read the card ID and type and output it to the screen.
 
 ## AnalogRead (ADC)
 
@@ -118,7 +110,6 @@ The SARADC utilization reference is the [CV180x CV181x Peripheral Drive Operatio
 
 - [Official Website](https://milkv.io/)
 
-<br>
-
 # FORUM
+
 - [MilkV Community](https://community.milkv.io/)

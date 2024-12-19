@@ -1,5 +1,6 @@
 
-/duo-sdk
+/host-tools
+host-tools
 
 *.o
 
