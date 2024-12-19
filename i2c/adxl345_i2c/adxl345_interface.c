@@ -88,5 +88,4 @@ uint8_t duo_spiwrite(uint8_t reg, uint8_t *buf, uint16_t len)   //用不到，�
 }
 void duo_rec_cb(uint8_t type)  //用不到，暂时不实现
 {
-    void;
 }
